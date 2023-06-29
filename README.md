@@ -1,2 +1,1 @@
-# styledwink
-CSS in JS Library
+# cortex-ui

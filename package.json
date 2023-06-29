@@ -1,0 +1,42 @@
+{
+  "name": "styledwink",
+  "version": "0.0.1",
+  "description": "CSS-in-JS employs abbreviations of styles for efficient styling and is compatible with all frameworks.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prod": "yarn run clear-cache & yarn convert-scss & yarn map-styles & yarn convert-box-presets & yarn styles-mapper & yarn compress-js & yarn export-components & yarn build",
+    "compress-js": "yarn gulp compress",
+    "map-styles": "yarn sass styles/index.scss styles/css/properties.css --style compressed",
+    "export-components": "node script/export.script.js",
+    "public": "node script/publish.script.js",
+    "clear-cache": "rm -rf cx",
+    "styles-mapper": "node script/map-styles.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Punyarit/styledwink.git"
+  },
+  "keywords": [
+    "styledwink"
+  ],
+  "author": "Punyarit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Punyarit/styledwink/issues"
+  },
+  "homepage": "https://github.com/Punyarit/styledwink#readme",
+  "files": [
+    "sw/**/*.js",
+    "sw/*.js",
+    "sw/**/*.d.ts"
+  ],
+  "devDependencies": {
+    "@types/stylis": "^4.2.0",
+    "gulp": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.58.0",
+    "uglify-js": "^3.17.4"
+  }
+}

@@ -1,0 +1,24 @@
+$font-types: (
+  bold: var(--bold),
+  boldItalic: var(--boldItalic),
+  extraBold: var(--extraBold),
+  extraBoldItalic: var(--extraBoldItalic),
+  extraLight: var(--extraLight),
+  extraLightItalic: var(--extraLightItalic),
+  italic: var(--italic),
+  light: var(--light),
+  lightItalic: var(--lightItalic),
+  medium: var(--medium),
+  mediumItalic: var(--mediumItalic),
+  regular: var(--regular),
+  semiBoldItalic: var(--semiBoldItalic),
+  semiBold: var(--semiBold),
+  thin: var(--thin),
+  thinItalic: var(--thinItalic),
+);
+
+@each $font-type, $font-value in $font-types {
+  #{$font-type} {
+    font-family: #{$font-value};
+  }
+}
