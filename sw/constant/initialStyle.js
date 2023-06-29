@@ -1,1 +1,2 @@
-const initialStyleText="html,body{margin:0}sw-div{display:block}";export{initialStyleText};
+export const initialStyleText = `html,body{margin:0}sw-div{display:block}`;
+//# sourceMappingURL=initialStyle.js.map

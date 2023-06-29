@@ -1,1 +1,4 @@
-const NoScreenError=r=>{throw new SyntaxError(`SW-THEME does not have the screen "${r}"`)};export{NoScreenError};
+export const NoScreenError = (s) => {
+    throw new SyntaxError(`SW-THEME does not have the screen "${s}"`);
+};
+//# sourceMappingURL=NoScreenError.js.map

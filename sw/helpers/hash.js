@@ -1,1 +1,16 @@
-const SEED=5381,phash=(h,a)=>{let s=a.length;for(;s;)h=33*h^a.charCodeAt(--s);return h},hash=h=>phash(SEED,h);export{SEED,phash,hash};
+export const SEED = 5381;
+// When we have separate strings it's useful to run a progressive
+// version of djb2 where we pretend that we're still looping over
+// the same string
+export const phash = (h, x) => {
+    let i = x.length;
+    while (i) {
+        h = (h * 33) ^ x.charCodeAt(--i);
+    }
+    return h;
+};
+// This is a djb2 hashing function
+export const hash = (x) => {
+    return phash(SEED, x);
+};
+//# sourceMappingURL=hash.js.map

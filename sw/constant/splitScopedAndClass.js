@@ -1,1 +1,2 @@
-const splitScopeAndClass="__";export{splitScopeAndClass};
+export const splitScopeAndClass = '__';
+//# sourceMappingURL=splitScopedAndClass.js.map

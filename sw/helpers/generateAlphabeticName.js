@@ -1,1 +1,17 @@
-const AD_REPLACER_R=/(a)(d)/gi,charsLength=52,getAlphabeticChar=e=>String.fromCharCode(e+(25<e?39:97));export default function generateAlphabeticName(e){let t="",a;for(a=Math.abs(e);a>charsLength;a=a/charsLength|0)t=getAlphabeticChar(a%charsLength)+t;return(getAlphabeticChar(a%charsLength)+t).replace(AD_REPLACER_R,"$1-$2")}
+const AD_REPLACER_R = /(a)(d)/gi;
+/* This is the "capacity" of our alphabet i.e. 2x26 for all letters plus their capitalised
+ * counterparts */
+const charsLength = 52;
+/* start at 75 for 'a' until 'z' (25) and then start at 65 for capitalised letters */
+const getAlphabeticChar = (code) => String.fromCharCode(code + (code > 25 ? 39 : 97));
+/* input a number, usually a hash and convert it to base-52 */
+export default function generateAlphabeticName(code) {
+    let name = '';
+    let x;
+    /* get a char and divide by alphabet-length */
+    for (x = Math.abs(code); x > charsLength; x = (x / charsLength) | 0) {
+        name = getAlphabeticChar(x % charsLength) + name;
+    }
+    return (getAlphabeticChar(x % charsLength) + name).replace(AD_REPLACER_R, '$1-$2');
+}
+//# sourceMappingURL=generateAlphabeticName.js.map

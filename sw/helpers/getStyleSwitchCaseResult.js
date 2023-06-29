@@ -1,1 +1,161 @@
-import{Theme}from"../theme";import{contentParseString}from"./contentParseString";import{NoStyleError}from"./NoStyleError";const minMax=(e,r,t,a)=>`${e}-${"w"===r?"width":"h"===r?"height":NoStyleError(a)}:`+t,borderFunc=(e,r,t,a)=>{var n;return["left","right","top","bottom"].includes(r)?([,,,,...n]=e.split("-"),`border-${r}: ${t} ${a} var(--${n.join("-")})`):([,,,...a]=e.split("-"),`border: ${r} ${t} var(--${a.join("-")})`)},gridGap=(e,r,t,a)=>{if("gap"===r)return`${"col"===e?"column":"row"}-gap:`+t;NoStyleError(a)},fontValue=e=>{var r=Theme.font?.[e.replace(/font-/g,"")];return r||NoStyleError(e),"font-family:"+r},fontSizeFunc=e=>{var r;return 1<+Theme.fsDisplay?(r=parseFloat(e),"font-size:"+Math.round(r*+Theme.fsDisplay)+e.replace(""+r,"")):"font-size:"+e},getOutlineStyle=(e,r,t)=>{return"offset"===e?"outline-offset:"+r:([,,,...t]=t.split("-"),`outline: ${e} ${r} var(--${t.join("-")})`)},getStyleSwitchCaseResult=(e,r,t,a,n)=>{switch(r){case"w":return"width:"+t;case"min":case"max":return minMax(r,t,a,e);case"h":return"height:"+t;case"bg":return`background-color:var(--${e.slice(3)})`;case"c":return`color:var(--${e.slice(2)})`;case"fs":return fontSizeFunc(t);case"fw":return"font-weight:"+t;case"round":return"border-radius:"+t;case"left":case"top":case"right":case"bottom":return r+":"+t;case"m":return"margin:"+t;case"ml":return"margin-left:"+t;case"mt":return"margin-top:"+t;case"mr":return"margin-right:"+t;case"mb":return"margin-bottom:"+t;case"mx":return`margin-left:${t};margin-right:`+t;case"my":return`margin-top:${t};margin-bottom:`+t;case"p":return"padding:"+t;case"pl":return"padding-left:"+t;case"pt":return"padding-top:"+t;case"pr":return"padding-right:"+t;case"pb":return"padding-bottom:"+t;case"px":return`padding-left:${t};padding-right:`+t;case"py":return`padding-top:${t};padding-bottom:`+t;case"border":return borderFunc(e,t,a,n);case"col":case"row":return gridGap(r,t,a,e);case"font":return fontValue(e);case"content":return`content:'${contentParseString(t)}'`;case"shadow":return"box-shadow:"+e.replace(/shadow|-/g," ").trim();case"animation":return"animation:"+e.replace(/animation|-|\$/g," ").trim();case"basis":return"flex-basis:"+t;case"line":return"height"===t?"line-height:"+a:NoStyleError(e);case"letter":return"spacing"===t?"letter-spacing:"+t:NoStyleError(e);case"indent":return"text-indent:"+t;case"outline":return getOutlineStyle(t,a,e);case"z":return"z-index:"+t;case"order":return"order:"+t;case"columns":return"columns:"+t;case"grow":return"flex-grow:"+t;case"shrink":return"flex-shrink:"+t;case"opacity":return"opacity:"+t;case"blur":case"brightness":case"contrast":case"grayscale":case"invert":case"saturate":case"sepia":return`filter:${r}(${t})`;case"hue":return`filter: hue-rotate(${t})`;case"backdrop":return"backdrop-filter:"+("hue"===t?`hue-rotate(${a})`:t+`(${a})`);case"transition":return"transition:"+e.replace(/transition|-/g," ");case"scale":case"rotate":case"translateX":case"translateY":case"skewX":case"skewY":return`transform:${r}(${t})`;case"fill":return"opacity"!==t?`fill:var(--${e.slice(5)})`:"fill-opacity:"+a;case"stroke":return"opacity"!==t?a?`stroke:var(--${e.slice(7)})`:"stroke-width:"+t:"stroke-opacity:"+a;default:return NoStyleError(e)}};export{getStyleSwitchCaseResult};
+import { Theme } from '../theme';
+import { contentParseString } from './contentParseString';
+import { NoStyleError } from './NoStyleError';
+const minMax = (attr1, attr2, attr3, s) => `${attr1}-${attr2 === 'w' ? 'width' : attr2 === 'h' ? 'height' : NoStyleError(s)}:${attr3}`;
+const borderFunc = (s, attr2, attr3, attr4) => {
+    if (['left', 'right', 'top', 'bottom'].includes(attr2)) {
+        const [, , , , ...borderSideColor] = s.split('-');
+        return `border-${attr2}: ${attr3} ${attr4} var(--${borderSideColor.join('-')})`;
+    }
+    const [, , , ...borderColor] = s.split('-');
+    return `border: ${attr2} ${attr3} var(--${borderColor.join('-')})`;
+};
+const gridGap = (attr1, attr2, attr3, s) => {
+    if (attr2 === 'gap') {
+        return `${attr1 === 'col' ? 'column' : 'row'}-gap:${attr3}`;
+    }
+    else {
+        NoStyleError(s);
+    }
+};
+const fontValue = (s) => {
+    const fontVal = Theme.font?.[s.replace(/font-/g, '')];
+    if (!fontVal)
+        NoStyleError(s);
+    return `font-family:${fontVal}`;
+};
+const fontSizeFunc = (attr2) => {
+    if (+Theme.fsDisplay > 1) {
+        const size = parseFloat(attr2);
+        const fontSize = Math.round(size * +Theme.fsDisplay);
+        const unit = attr2.replace(`${size}`, '');
+        return `font-size:${fontSize}${unit}`;
+    }
+    return `font-size:${attr2}`;
+};
+const getOutlineStyle = (attr2, attr3, s) => {
+    if (attr2 === 'offset') {
+        return `outline-offset:${attr3}`;
+    }
+    const [, , , ...outlineColor] = s.split('-');
+    return `outline: ${attr2} ${attr3} var(--${outlineColor.join('-')})`;
+};
+export const getStyleSwitchCaseResult = (s, attr1, attr2, attr3, attr4) => {
+    switch (attr1) {
+        case 'w':
+            return `width:${attr2}`;
+        case 'min':
+        case 'max':
+            return minMax(attr1, attr2, attr3, s);
+        case 'h':
+            return `height:${attr2}`;
+        case 'bg':
+            return `background-color:var(--${s.slice(3)})`;
+        case 'c':
+            return `color:var(--${s.slice(2)})`;
+        case 'fs':
+            return fontSizeFunc(attr2);
+        case 'fw':
+            return `font-weight:${attr2}`;
+        case 'round':
+            return `border-radius:${attr2}`;
+        case 'left':
+        case 'top':
+        case 'right':
+        case 'bottom':
+            return `${attr1}:${attr2}`;
+        case 'm':
+            return `margin:${attr2}`;
+        case 'ml':
+            return `margin-left:${attr2}`;
+        case 'mt':
+            return `margin-top:${attr2}`;
+        case 'mr':
+            return `margin-right:${attr2}`;
+        case 'mb':
+            return `margin-bottom:${attr2}`;
+        case 'mx':
+            return `margin-left:${attr2};margin-right:${attr2}`;
+        case 'my':
+            return `margin-top:${attr2};margin-bottom:${attr2}`;
+        case 'p':
+            return `padding:${attr2}`;
+        case 'pl':
+            return `padding-left:${attr2}`;
+        case 'pt':
+            return `padding-top:${attr2}`;
+        case 'pr':
+            return `padding-right:${attr2}`;
+        case 'pb':
+            return `padding-bottom:${attr2}`;
+        case 'px':
+            return `padding-left:${attr2};padding-right:${attr2}`;
+        case 'py':
+            return `padding-top:${attr2};padding-bottom:${attr2}`;
+        case 'border':
+            return borderFunc(s, attr2, attr3, attr4);
+        case 'col':
+        case 'row':
+            return gridGap(attr1, attr2, attr3, s);
+        case 'font':
+            return fontValue(s);
+        case 'content':
+            return `content:'${contentParseString(attr2)}'`;
+        case 'shadow':
+            return `box-shadow:${s.replace(/shadow|-/g, ' ').trim()}`;
+        case 'animation':
+            return `animation:${s.replace(/animation|-|\$/g, ' ').trim()}`;
+        case 'basis':
+            return `flex-basis:${attr2}`;
+        case 'line':
+            return attr2 === 'height' ? `line-height:${attr3}` : NoStyleError(s);
+        case 'letter':
+            return attr2 === 'spacing' ? `letter-spacing:${attr2}` : NoStyleError(s);
+        case 'indent':
+            return `text-indent:${attr2}`;
+        case 'outline':
+            return getOutlineStyle(attr2, attr3, s);
+        case 'z':
+            return `z-index:${attr2}`;
+        case 'order':
+            return `order:${attr2}`;
+        case 'columns':
+            return `columns:${attr2}`;
+        case 'grow':
+            return `flex-grow:${attr2}`;
+        case 'shrink':
+            return `flex-shrink:${attr2}`;
+        case 'opacity':
+            return `opacity:${attr2}`;
+        case 'blur':
+        case 'brightness':
+        case 'contrast':
+        case 'grayscale':
+        case 'invert':
+        case 'saturate':
+        case 'sepia':
+            return `filter:${attr1}(${attr2})`;
+        case 'hue':
+            return `filter: hue-rotate(${attr2})`;
+        case 'backdrop':
+            return `backdrop-filter:${attr2 === 'hue' ? `hue-rotate(${attr3})` : `${attr2}(${attr3})`}`;
+        case 'transition':
+            return `transition:${s.replace(/transition|-/g, ' ')}`;
+        case 'scale':
+        case 'rotate':
+        case 'translateX':
+        case 'translateY':
+        case 'skewX':
+        case 'skewY':
+            return `transform:${attr1}(${attr2})`;
+        case 'fill':
+            return attr2 !== 'opacity' ? `fill:var(--${s.slice(5)})` : `fill-opacity:${attr3}`;
+        case 'stroke':
+            return attr2 !== 'opacity'
+                ? `${attr3 ? `stroke:var(--${s.slice(7)})` : `stroke-width:${attr2}`}`
+                : `stroke-opacity:${attr3}`;
+        default:
+            return NoStyleError(s);
+    }
+};
+//# sourceMappingURL=getStyleSwitchCaseResult.js.map
