@@ -1,0 +1,1 @@
+const NoStyleError=r=>{throw new SyntaxError(`SW-BOX does not have the style "${r}"`)};export{NoStyleError};

@@ -1,0 +1,1 @@
+const SEED=5381,phash=(h,a)=>{let s=a.length;for(;s;)h=33*h^a.charCodeAt(--s);return h},hash=h=>phash(SEED,h);export{SEED,phash,hash};

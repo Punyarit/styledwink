@@ -1,0 +1,1 @@
+function generateColorStyleText(e){let t="";for(var[r,o]of Object.entries(e))t+=`sw-theme.${r} { ${o} } `;return t}export{generateColorStyleText};

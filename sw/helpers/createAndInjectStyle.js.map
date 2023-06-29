@@ -1,0 +1,1 @@
+{"version":3,"file":"createAndInjectStyle.js","sourceRoot":"","sources":["../../src/helpers/createAndInjectStyle.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,oBAAoB,CAAC,OAAe;IAClD,MAAM,KAAK,GAAG,IAAI,aAAa,EAAE,CAAC;IAClC,KAAK,CAAC,WAAW,CAAC,OAAO,CAAC,CAAC;IAC3B,QAAQ,CAAC,kBAAkB,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;AAC1C,CAAC"}

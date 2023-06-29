@@ -1,1 +1,1 @@
-export const initialStyleText = `html,body{margin:0}cx-div{display:block}`;
+export const initialStyleText = `html,body{margin:0}sw-div{display:block}`;

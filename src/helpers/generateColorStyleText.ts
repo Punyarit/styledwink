@@ -4,7 +4,7 @@ export function generateColorStyleText(themeObj: ThemeVariable) {
   let cssOutput = '';
 
   for (const [theme, value] of Object.entries(themeObj)) {
-    cssOutput += `cx-theme.${theme} { ${value} } `;
+    cssOutput += `sw-theme.${theme} { ${value} } `;
   }
 
   return cssOutput;

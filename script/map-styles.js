@@ -25,7 +25,7 @@ fs.readFile(cssFilePath, 'utf8', (err, data) => {
     cssObject[selector.trim()] = value;
   });
 
-  const jsCode = `export const styleMapped = ${JSON.stringify(cssObject)};`;
+  const jsCode = `export const styleMapped:Record<string,string> = ${JSON.stringify(cssObject)};`;
   fs.writeFile(outputFilePath, jsCode, 'utf8', (err) => {
     if (err) {
       console.error(err);

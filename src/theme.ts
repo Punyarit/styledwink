@@ -29,7 +29,6 @@ export const styled = <T extends string>(styleAbbr: string): StyleProperty<T> =>
   return accessibleClassName as StyleProperty<T>;
 };
 
-// CX-Theme
 export class Theme extends HTMLElement {
   public static color: ThemeVariable = {};
   public static font?: ThemeVariable;
@@ -40,9 +39,9 @@ export class Theme extends HTMLElement {
   constructor() {
     super();
     const colorStyleText = generateColorStyleText(Theme.color);
-    const variableStyleText = `cx-theme{${Theme.variable}}`;
+    const variableStyleText = `sw-theme{${Theme.variable}}`;
     const themeSTyle = colorStyleText + variableStyleText;
     createAndInjectStyle(themeSTyle);
   }
 }
-customElements.define('cx-theme', Theme);
+customElements.define('sw-theme', Theme);

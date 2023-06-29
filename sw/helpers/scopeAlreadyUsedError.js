@@ -1,0 +1,1 @@
+const scopeAlreadyUsedError=e=>{throw Error(`Scope: "${e}" has already been used. Please change scope name.`)};export{scopeAlreadyUsedError};

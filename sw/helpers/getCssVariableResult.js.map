@@ -1,0 +1,1 @@
+{"version":3,"file":"getCssVariableResult.js","sourceRoot":"","sources":["../../src/helpers/getCssVariableResult.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,oBAAoB,CAAC,kBAA4B;IAC/D,OAAO,kBAAkB,CAAC,MAAM,CAAC,CAAC,CAAC,YAAY,kBAAkB,CAAC,IAAI,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,CAAC,EAAE,CAAC;AACrF,CAAC"}

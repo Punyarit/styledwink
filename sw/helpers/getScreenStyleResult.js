@@ -1,0 +1,1 @@
+function getScreenStyleResult(e,c){if(e&&c){let t,s;if(e){t=[];var r=e;for(const S in r){var l=r[S],n=c[l.classRef];let e;n?e=getScreenStyleText(l,n):(e=getScreenStyleText(l,l),(s||={})[l.classRef]=l),t.push(e)}}return{screenCssText:t,screenAccessibleClass:s}}}function getScreenStyleText(e,t){return e.cssText?.replace(e.classRef,t?.mergedClass)}export{getScreenStyleResult};

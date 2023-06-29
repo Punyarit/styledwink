@@ -6,13 +6,12 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "prod": "yarn run clear-cache & yarn convert-scss & yarn map-styles & yarn convert-box-presets & yarn styles-mapper & yarn compress-js & yarn export-components & yarn build",
+    "prod": "yarn run clear-cache & yarn build & yarn convert-css & yarn map-styles & yarn compress-js",
     "compress-js": "yarn gulp compress",
-    "map-styles": "yarn sass styles/index.scss styles/css/properties.css --style compressed",
-    "export-components": "node script/export.script.js",
+    "convert-css": "yarn sass styles/index.scss styles/css/properties.css --style compressed",
     "public": "node script/publish.script.js",
-    "clear-cache": "rm -rf cx",
-    "styles-mapper": "node script/map-styles.js"
+    "clear-cache": "rm -rf sw",
+    "map-styles": "node script/map-styles.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +32,6 @@
     "sw/**/*.d.ts"
   ],
   "devDependencies": {
-    "@types/stylis": "^4.2.0",
     "gulp": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.58.0",

@@ -1,0 +1,1 @@
+const AD_REPLACER_R=/(a)(d)/gi,charsLength=52,getAlphabeticChar=e=>String.fromCharCode(e+(25<e?39:97));export default function generateAlphabeticName(e){let t="",a;for(a=Math.abs(e);a>charsLength;a=a/charsLength|0)t=getAlphabeticChar(a%charsLength)+t;return(getAlphabeticChar(a%charsLength)+t).replace(AD_REPLACER_R,"$1-$2")}

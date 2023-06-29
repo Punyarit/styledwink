@@ -1,0 +1,1 @@
+{"version":3,"file":"generateColorStyleText.js","sourceRoot":"","sources":["../../src/helpers/generateColorStyleText.ts"],"names":[],"mappings":"AAEA,MAAM,UAAU,sBAAsB,CAAC,QAAuB;IAC5D,IAAI,SAAS,GAAG,EAAE,CAAC;IAEnB,KAAK,MAAM,CAAC,KAAK,EAAE,KAAK,CAAC,IAAI,MAAM,CAAC,OAAO,CAAC,QAAQ,CAAC,EAAE;QACrD,SAAS,IAAI,YAAY,KAAK,MAAM,KAAK,KAAK,CAAC;KAChD;IAED,OAAO,SAAS,CAAC;AACnB,CAAC"}

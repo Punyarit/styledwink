@@ -1,0 +1,1 @@
+const splitScopeAndClass="__";export{splitScopeAndClass};

@@ -1,3 +1,3 @@
 export function getCssVariableResult(cssVariablesResult: string[]) {
-  return cssVariablesResult.length ? `cx-theme{${cssVariablesResult.join('')}}` : ``;
+  return cssVariablesResult.length ? `sw-theme{${cssVariablesResult.join('')}}` : ``;
 }

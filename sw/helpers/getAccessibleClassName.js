@@ -1,0 +1,1 @@
+import{splitScopeAndClass}from"../constant/splitScopedAndClass";function getAccessibleClassName(e,s){var a={};for(const n in s){var t=s[n];a[convertToCamelCase(n.replace(""+e+splitScopeAndClass,""))]=t.mergedClass}return a}function convertToCamelCase(e){return e.replace(/-([a-z])/g,function(e){return e[1].toUpperCase()})}export{getAccessibleClassName};
